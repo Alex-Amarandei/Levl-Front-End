@@ -1,6 +1,5 @@
 import Button from "@mui/material/Button";
 import { useEthers } from "@usedapp/core";
-import { ethers } from "ethers";
 import logo from "../../images/logo.png";
 
 const NavBarItem = ({ title, classprops }) => (
@@ -10,9 +9,6 @@ const NavBarItem = ({ title, classprops }) => (
 		{title}
 	</li>
 );
-
-const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-const networkName = (await provider.getNetwork()).name;
 
 const Navbar = () => {
 	const { account, activateBrowserWallet, deactivate } = useEthers();
@@ -26,7 +22,7 @@ const Navbar = () => {
 			<ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial capitalize">
 				{connected ? (
 					<>
-						{[account, networkName].map((item, index) => (
+						{[account, "rinkeby"].map((item, index) => (
 							<NavBarItem key={item + index} title={item} />
 						))}
 
@@ -42,7 +38,7 @@ const Navbar = () => {
 					</>
 				) : (
 					<>
-						{[networkName].map((item, index) => (
+						{["rinkeby"].map((item, index) => (
 							<NavBarItem key={item + index} title={item} />
 						))}
 						<Button

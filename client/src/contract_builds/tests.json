@@ -1,0 +1,492 @@
+{
+  "contracts": {
+    "DataProvider": "01561de240cbd1e4c16f4750cc750ba0552e92ea",
+    "ERC20EUR": "3cebd3e2dc68b311620557d7e6758b9e7b101d9b",
+    "ERC20RON": "254b53996e64cd48d579413ebb5da26f423fd632",
+    "FlashArbitrage": "54e8acba79d7a11f5c775dfb62aadf7a94b30093",
+    "FundsManager": "319d5ff192937859c32a24b7b11fd9a857733db3",
+    "OpenZeppelin/openzeppelin-contracts@3.4.0/ERC20": "5f752f651d57bcdbb64c8d6e1654bb78df527095",
+    "OpenZeppelin/openzeppelin-contracts@3.4.0/SafeMath": "3b4158955f564edb18bd7a8ffdb49859c904f0b7"
+  },
+  "tests": {
+    "tests/test_data_provider.py": {
+      "coverage": true,
+      "isolated": false,
+      "results": ".",
+      "sha1": "dbe3059840900c2619dd34d1c9b12e13ddb9981f",
+      "txhash": [
+        "3f50f2b3c201b09c59b6972ea1c63d5841639b75",
+        "44afdfd4660cf71950da7b911395e27a4b992eb8"
+      ]
+    },
+    "tests/test_funds_manager.py": {
+      "coverage": true,
+      "isolated": false,
+      "results": ".......",
+      "sha1": "1d47bee3d4227f9ab4ac3ddcf3fa63f051bc458d",
+      "txhash": [
+        "02c11fd9a1bad87142080cdfa59325e71795ac72",
+        "0a7c99a7f8e2c35b686d3c12274273e5dcd9fcdd",
+        "1742840025c2764d72a668d91887e90041785685",
+        "18242ace809d836e286f032f5807f8f620e30c44",
+        "1dd2f5492366711ff4227fc3b415d214e74f5de0",
+        "20aca6cb89b84eb42bd55db14f2763013e0e8f94",
+        "226c1e929205cb2db39645b8de254eac1e1dd5a1",
+        "2b54ec05d6600a5faef752e5d382bd4cbd53bd42",
+        "2d459e2f33347c1f8624dc32522102303e1cb686",
+        "3245d0ff16d33422d5ff919971cf4cd03024791f",
+        "4f5bc469e6333e237d2d1fc7992f62a5c2625465",
+        "55a1f5a011d0a82ea447403d577e35ad93f362eb",
+        "64ba60b2150445407139ac98914edea8a5ac39f8",
+        "6965a867c4903844242ad99e2efbd9841d61255b",
+        "81bf6514b65e95a7f7c1e1dd3fc0b87d8691a5f4",
+        "896ee3f272b4f1692158c9f7801fe186626daf11",
+        "9997213760e314994a9134ab6aa4611944c584f2",
+        "99b3ce5ca40fa0c73646b88790d1100b3bb084a9",
+        "aa421f7363aaea70de670c0100409e24525702a1",
+        "ae98ca5468c6b927911a9c6a72c2fa77be1525f9",
+        "b0e2d7ec8dae376ddb5aac25261cbf5335730db9",
+        "b5694f90edb1198c114d87e992d56507c0794a9c",
+        "c55d835a0a9c3e4a4a828a8339658a37ee4a3dac",
+        "cd8e4c6b88a0b2262607de96da652185d49bd823",
+        "d083210005e122568743004e6683bfe2bf798623",
+        "d7ecd12b6b5a57199048d2979ea0877b82cce7ed",
+        "dae5accdffb9353a4097069dcbd318fe226362a3",
+        "e0f26a9f75ae8a5ff8d7dd62c10b69069e6bfdf4",
+        "e9b0e501cfd85590298dbb9a3c971305309ede36",
+        "ea43a65e046476bff936834d953f6386bef0466a",
+        "f1a7e73ea805be3951d80e642beae6c5c2d66d49"
+      ]
+    }
+  },
+  "tx": {
+    "02c11fd9a1bad87142080cdfa59325e71795ac72": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "0a7c99a7f8e2c35b686d3c12274273e5dcd9fcdd": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "1742840025c2764d72a668d91887e90041785685": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "18242ace809d836e286f032f5807f8f620e30c44": {
+      "FundsManager": {
+        "0": [
+          [
+            9
+          ],
+          [
+            14
+          ],
+          []
+        ]
+      }
+    },
+    "1dd2f5492366711ff4227fc3b415d214e74f5de0": {
+      "FundsManager": {
+        "0": [
+          [
+            9,
+            10
+          ],
+          [],
+          [
+            14
+          ]
+        ]
+      }
+    },
+    "20aca6cb89b84eb42bd55db14f2763013e0e8f94": {
+      "FundsManager": {
+        "0": [
+          [
+            9,
+            10
+          ],
+          [],
+          [
+            14
+          ]
+        ]
+      }
+    },
+    "226c1e929205cb2db39645b8de254eac1e1dd5a1": {
+      "FundsManager": {
+        "0": [
+          [
+            9,
+            10
+          ],
+          [],
+          [
+            14
+          ]
+        ]
+      }
+    },
+    "2b54ec05d6600a5faef752e5d382bd4cbd53bd42": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "2d459e2f33347c1f8624dc32522102303e1cb686": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "3245d0ff16d33422d5ff919971cf4cd03024791f": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "3f50f2b3c201b09c59b6972ea1c63d5841639b75": {
+      "DataProvider": {
+        "10": [
+          [
+            4,
+            5,
+            34,
+            35
+          ],
+          [
+            64
+          ],
+          [
+            63,
+            66
+          ]
+        ],
+        "11": [
+          [
+            9,
+            10,
+            33,
+            49
+          ],
+          [],
+          [
+            67,
+            68,
+            69
+          ]
+        ],
+        "6": [
+          [
+            1
+          ],
+          [],
+          [
+            50,
+            51,
+            52,
+            53
+          ]
+        ],
+        "9": [
+          [
+            16,
+            17,
+            20,
+            21,
+            22,
+            23,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          [
+            57,
+            59,
+            60,
+            62
+          ],
+          [
+            54,
+            55,
+            56,
+            58,
+            61
+          ]
+        ]
+      }
+    },
+    "44afdfd4660cf71950da7b911395e27a4b992eb8": {},
+    "4f5bc469e6333e237d2d1fc7992f62a5c2625465": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "55a1f5a011d0a82ea447403d577e35ad93f362eb": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "64ba60b2150445407139ac98914edea8a5ac39f8": {
+      "FundsManager": {
+        "0": [
+          [
+            9,
+            10
+          ],
+          [],
+          [
+            14
+          ]
+        ]
+      }
+    },
+    "6965a867c4903844242ad99e2efbd9841d61255b": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "81bf6514b65e95a7f7c1e1dd3fc0b87d8691a5f4": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "896ee3f272b4f1692158c9f7801fe186626daf11": {
+      "FundsManager": {
+        "0": [
+          [
+            0,
+            1
+          ],
+          [
+            11
+          ],
+          []
+        ]
+      }
+    },
+    "9997213760e314994a9134ab6aa4611944c584f2": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "99b3ce5ca40fa0c73646b88790d1100b3bb084a9": {
+      "FundsManager": {
+        "0": [
+          [
+            5,
+            6
+          ],
+          [],
+          [
+            12
+          ]
+        ]
+      }
+    },
+    "aa421f7363aaea70de670c0100409e24525702a1": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "ae98ca5468c6b927911a9c6a72c2fa77be1525f9": {
+      "FundsManager": {
+        "0": [
+          [
+            9,
+            10
+          ],
+          [],
+          [
+            14
+          ]
+        ]
+      }
+    },
+    "b0e2d7ec8dae376ddb5aac25261cbf5335730db9": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "b5694f90edb1198c114d87e992d56507c0794a9c": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "c55d835a0a9c3e4a4a828a8339658a37ee4a3dac": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "cd8e4c6b88a0b2262607de96da652185d49bd823": {},
+    "d083210005e122568743004e6683bfe2bf798623": {
+      "FundsManager": {
+        "0": [
+          [
+            9,
+            10
+          ],
+          [],
+          [
+            14
+          ]
+        ]
+      }
+    },
+    "d7ecd12b6b5a57199048d2979ea0877b82cce7ed": {
+      "FundsManager": {
+        "0": [
+          [
+            4
+          ],
+          [],
+          []
+        ]
+      }
+    },
+    "dae5accdffb9353a4097069dcbd318fe226362a3": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "e0f26a9f75ae8a5ff8d7dd62c10b69069e6bfdf4": {
+      "FundsManager": {
+        "0": [
+          [
+            5,
+            6
+          ],
+          [
+            12,
+            13
+          ],
+          []
+        ]
+      }
+    },
+    "e9b0e501cfd85590298dbb9a3c971305309ede36": {
+      "FundsManager": {
+        "0": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "ea43a65e046476bff936834d953f6386bef0466a": {
+      "FundsManager": {
+        "0": [
+          [
+            2,
+            3
+          ],
+          [],
+          [
+            11
+          ]
+        ]
+      }
+    },
+    "f1a7e73ea805be3951d80e642beae6c5c2d66d49": {
+      "FundsManager": {
+        "0": [
+          [
+            7,
+            8
+          ],
+          [
+            12
+          ],
+          [
+            13
+          ]
+        ]
+      }
+    }
+  }
+}

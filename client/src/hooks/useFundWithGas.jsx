@@ -2,35 +2,32 @@ import { ethers } from "ethers";
 import fundsManagerJson from "../contract_builds/contracts/FundsManager.json";
 import mapJson from "../contract_builds/deployments/map.json";
 
-let provider;
-window.ethereum
-	.enable()
-	.then((provider = new ethers.providers.Web3Provider(window.ethereum)));
-const signer = provider.getSigner();
-
-const fundsManagerAbi = fundsManagerJson["abi"];
+const provider = new ethers.providers.Web3Provider(ethereum);
 
 const fundsManagerAddress = mapJson["4"]["FundsManager"][0];
+const fundsManagerAbi = fundsManagerJson["abi"];
+const fundsManagerContract = new ethers.Contract(
+	fundsManagerAddress,
+	fundsManagerAbi,
+	provider.getSigner()
+);
 
-const useFundWithGas = async (fee) => {
-	const fundsManagerContract = new ethers.Contract(
-		fundsManagerAddress,
-		fundsManagerAbi,
-		signer
-	);
+const useFundWithGas = async (feeInWei) => {
+	let txHash;
+	await fundsManagerContract
+		.fundWithGas({
+			value: feeInWei.toHexString(),
+		})
+		.then((tx) => {
+			console.log(tx);
+			txHash = tx["hash"];
+		})
+		.catch((error) => {
+			console.error(error);
+			txHash = "FAILED";
+		});
 
-	const tx = {
-		to: fundsManagerAddress,
-		value: fee,
-		gasLimit: ethers.utils.hexlify(100000),
-		gasPrice: provider.getGasPrice(),
-	};
-
-	let res;
-	await signer.sendTransaction(tx).then((transaction) => {
-		res = transaction;
-	});
-	return res;
+	return txHash;
 };
 
 export default useFundWithGas;

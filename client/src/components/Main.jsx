@@ -44,7 +44,7 @@ const Main = () => {
 
 	useEffect(() => {
 		getFee.then((value) => setFee(value));
-	}, []);
+	}, [getFee]);
 
 	const [pairExists, setPairExists] = useState(false);
 	const [showPairAlert, setShowPairAlert] = useState("");
@@ -85,23 +85,25 @@ const Main = () => {
 				user_address: account,
 				token_0_address: input0,
 				token_1_address: input1,
-				fee: fee.toString(),
+				fee: fee,
 			},
 		});
 	};
 
 	const handleSubmit = async () => {
 		if (pairExists) {
-			try {
-				const result = await useFundWithGas(fee);
-				setFundSuccessful(true);
-				setShowFundAlert(result["hash"]);
+			let status;
+			await useFundWithGas(fee)
+				.then((txHash) => (status = txHash))
+				.catch(() => (status = "FAILED"));
 
-				registerOrder();
-			} catch (e) {
-				console.log(e);
+			if (status == "FAILED") {
 				setFundSuccessful(false);
 				setShowFundAlert("FAILED");
+			} else {
+				setFundSuccessful(true);
+				setShowFundAlert(status);
+				registerOrder();
 			}
 		} else {
 			if (input0 == input1 && input0.length > 0) {

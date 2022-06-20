@@ -20,6 +20,12 @@ body,
     min-height: 100vh;
 }
 
+.chipReceipt .MuiChip-root {
+    width: 200px;
+    margin-bottom: 10px;
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
 .gradient-background-dark {
     background-color: rgb(14, 116, 144);
     background-image: radial-gradient( at 90% 60%, rgb(12, 74, 110) 0, transparent 85%), radial-gradient(at 6% 52%, rgb(254, 242, 242) 0, transparent 60%), radial-gradient(at 54% 73%, rgb(250, 232, 255) 0, transparent 87%), radial-gradient(at 99% 35%, rgb(248, 250, 252) 0, transparent 63%), radial-gradient(at 91% 69%, rgb(113, 63, 18) 0, transparent 63%), radial-gradient(at 100% 13%, rgb(34, 211, 238) 0, transparent 30%);

@@ -85,24 +85,24 @@ const Main = () => {
 				user_address: account,
 				token_0_address: input0,
 				token_1_address: input1,
-				fee: fee,
+				fee: ethers.utils.formatEther(fee.toString()),
 			},
 		});
 	};
 
 	const handleSubmit = async () => {
 		if (pairExists) {
-			let status;
+			let hash;
 			await useFundWithGas(fee)
-				.then((txHash) => (status = txHash))
-				.catch(() => (status = "FAILED"));
+				.then((txHash) => (hash = txHash))
+				.catch(() => (hash = "FAILED"));
 
-			if (status == "FAILED") {
+			if (hash == "FAILED") {
 				setFundSuccessful(false);
 				setShowFundAlert("FAILED");
 			} else {
 				setFundSuccessful(true);
-				setShowFundAlert(status);
+				setShowFundAlert(hash);
 				registerOrder();
 			}
 		} else {

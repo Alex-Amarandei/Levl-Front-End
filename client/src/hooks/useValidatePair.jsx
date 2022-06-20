@@ -2,9 +2,7 @@ import { ethers } from "ethers";
 import brownieJson from "../brownieConfig.json";
 import factoryJson from "../contract_builds/interfaces/IUniswapV2Factory.json";
 
-const provider = new ethers.providers.JsonRpcProvider(
-	"https://rinkeby.infura.io/v3/5c3ac3bf86374afd820299e0eaef8a6d"
-);
+const provider = new ethers.providers.Web3Provider(ethereum);
 
 const factoryAbi = factoryJson["abi"];
 

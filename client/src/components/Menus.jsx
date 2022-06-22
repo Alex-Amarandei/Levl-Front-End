@@ -1,4 +1,3 @@
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import {
 	Alert,
@@ -11,7 +10,6 @@ import {
 	Snackbar,
 	Typography,
 } from "@mui/material";
-import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import { useGetOrders, useRefundGas } from "../hooks";
 
@@ -32,20 +30,9 @@ const Menus = () => {
 		setShowRefundAlert("");
 	};
 
-	const cancelOrder = (orderId, _all) => {
-		axios({
-			method: "delete",
-			url: "/server/delete/order",
-			data: {
-				id: orderId,
-				all: _all,
-			},
-		});
-	};
-
-	const cancelOrderHandler = async (all, fee, id) => {
+	const cancelOrderHandler = async (id, all) => {
 		let hash;
-		await useRefundGas(all, fee)
+		await useRefundGas(id, all)
 			.then((txHash) => (hash = txHash))
 			.catch(() => (hash = "FAILED"));
 
@@ -93,7 +80,7 @@ const Menus = () => {
 					>
 						{element["status"]}
 					</Typography>
-					{element["status"] != "COMPLETED" ? (
+					{element["status"] == "PENDING" || element["status"] == "REJECTED" ? (
 						<Chip
 							sx={{
 								marginRight: 1,
@@ -103,9 +90,7 @@ const Menus = () => {
 							variant="filled"
 							color="warning"
 							clickable
-							onClick={() =>
-								cancelOrderHandler(false, element["fee"], element["id"])
-							}
+							onClick={() => cancelOrderHandler(element["id"], false)}
 						/>
 					) : (
 						<></>
@@ -176,7 +161,7 @@ const Menus = () => {
 					Fee: {element["fee"]} ETH
 				</Typography>
 			</CardContent>
-			{element["hash"].length > 0 ? (
+			{element["status"] == "COMPLETED" ? (
 				<div align="center" className="chipReceipt">
 					<Chip
 						component="a"
@@ -198,6 +183,7 @@ const Menus = () => {
 
 	useEffect(() => {
 		getOrders.then((res) => {
+			res.reverse();
 			setOrders(res);
 		});
 	}, []);
@@ -211,17 +197,6 @@ const Menus = () => {
 		}
 
 		setMenuShowing({ ...menuShowing, [anchor]: open });
-	};
-
-	const pendingOrdersExist = (orders) => {
-		console.log(orders, "orders");
-		if (orders.length == 0) return false;
-
-		orders.forEach((order) => {
-			if (order["status"] != "COMPLETED") return true;
-		});
-
-		return false;
 	};
 
 	return (
@@ -254,20 +229,6 @@ const Menus = () => {
 								<Divider sx={{ background: "#8b5cf6" }} />
 							</>
 						))}
-						{pendingOrdersExist(orders) ? (
-							<Chip
-								variant="filled"
-								label="Cancel All Orders"
-								color="error"
-								onClick={() =>
-									cancelOrderHandler(true, element["fee"], element["id"])
-								}
-								icon={<DeleteForeverIcon />}
-								clickable
-							/>
-						) : (
-							<></>
-						)}
 					</Drawer>
 					<Button
 						variant="contained"
@@ -304,7 +265,7 @@ const Menus = () => {
 											</Typography>
 										</Divider>
 										<br />
-										<Typography variant="h6" align="center" gutterBottom>
+										<Typography variant="h6" align="center">
 											👍 Here are a few tips to help you get started 👍
 										</Typography>
 										<br />
@@ -324,13 +285,12 @@ const Menus = () => {
 											your current address and the chain on which you are now.
 											We currently only support the Rinkeby network.
 										</Typography>
-
+										<br />
 										<Divider>
 											<Typography variant="h5" gutterBottom>
 												🪙 <b>Choosing Tokens</b>
 											</Typography>
 										</Divider>
-										<br />
 										<Typography
 											variant="body1"
 											style={{ textIndent: 50 }}

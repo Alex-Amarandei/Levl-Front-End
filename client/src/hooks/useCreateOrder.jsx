@@ -12,21 +12,23 @@ const orderManagerContract = new ethers.Contract(
 	provider.getSigner()
 );
 
-const useRefundGas = async (id, all) => {
+const useCreateOrder = async (token0Address, token1Address, feeInWei) => {
 	let txHash;
 
 	await orderManagerContract
-		.refundGas(id, all)
+		.createOrder(token0Address, token1Address, {
+			value: feeInWei.toHexString(),
+		})
 		.then((tx) => {
-			console.log(tx);
 			txHash = tx["hash"];
+			console.log(tx);
 		})
 		.catch((error) => {
-			console.error(error);
 			txHash = "FAILED";
+			console.error(error);
 		});
 
 	return txHash;
 };
 
-export default useRefundGas;
+export default useCreateOrder;

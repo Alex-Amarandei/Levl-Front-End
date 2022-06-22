@@ -1,21 +1,18 @@
 import { ethers } from "ethers";
-import fundsManagerJson from "../contract_builds/contracts/FundsManager.json";
+import orderManagerJson from "../contract_builds/contracts/OrderManager.json";
 import mapJson from "../contract_builds/deployments/map.json";
 
 const provider = new ethers.providers.Web3Provider(ethereum);
-
-const fundsManagerAbi = fundsManagerJson["abi"];
-
-const fundsManagerAddress = mapJson["4"]["FundsManager"][0];
+const orderManagerAbi = orderManagerJson["abi"];
+const orderManagerAddress = mapJson["4"]["OrderManager"][0];
+const orderManagerContract = new ethers.Contract(
+	orderManagerAddress,
+	orderManagerAbi,
+	provider
+);
 
 const useGetFee = async () => {
-	const fundsManagerContract = new ethers.Contract(
-		fundsManagerAddress,
-		fundsManagerAbi,
-		provider
-	);
-
-	const getFee = await fundsManagerContract.fee();
+	const getFee = await orderManagerContract.fee();
 	return getFee;
 };
 

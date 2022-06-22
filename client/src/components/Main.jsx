@@ -1,10 +1,9 @@
 import { Alert, Snackbar } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useEthers } from "@usedapp/core";
-import axios from "axios";
 import { constants, ethers } from "ethers";
 import { useEffect, useState } from "react";
-import { useFundWithGas, useGetFee, useValidatePair } from "../hooks";
+import { useCreateOrder, useGetFee, useValidatePair } from "../hooks";
 const Input = ({
 	placeholder,
 	name,
@@ -76,24 +75,10 @@ const Main = () => {
 		}
 	};
 
-	const registerOrder = () => {
-		axios({
-			method: "post",
-			url: "/server/post/order",
-			data: {
-				network: "rinkeby",
-				user_address: account,
-				token_0_address: input0,
-				token_1_address: input1,
-				fee: ethers.utils.formatEther(fee.toString()),
-			},
-		});
-	};
-
 	const handleSubmit = async () => {
 		if (pairExists) {
 			let hash;
-			await useFundWithGas(fee)
+			await useCreateOrder(input0, input1, fee)
 				.then((txHash) => (hash = txHash))
 				.catch(() => (hash = "FAILED"));
 
@@ -103,7 +88,6 @@ const Main = () => {
 			} else {
 				setFundSuccessful(true);
 				setShowFundAlert(hash);
-				registerOrder();
 			}
 		} else {
 			if (input0 == input1 && input0.length > 0) {
